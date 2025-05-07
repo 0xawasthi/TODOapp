@@ -34,9 +34,9 @@ class ToDoTile extends StatelessWidget {
               color:
                   taskCompleted
                       ? CupertinoColors.activeGreen
-                      : CupertinoColors.black,
+                      : CupertinoColors.inactiveGray,
             ),
-            activeColor: Colors.white,
+            activeColor: Colors.transparent,
 
             checkColor: CupertinoColors.activeGreen,
           ),
