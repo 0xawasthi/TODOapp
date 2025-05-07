@@ -25,28 +25,29 @@ class ToDoTile extends StatelessWidget {
         color: taskCompleted ? Color(0xffdcfce7) : null,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Container(
-        child: Row(
-          children: [
-            CupertinoCheckbox(
-              value: taskCompleted,
-              onChanged: onChanged,
-              side: BorderSide(
-                color:
-                    taskCompleted
-                        ? CupertinoColors.activeGreen
-                        : CupertinoColors.black,
-              ),
-              activeColor: Colors.white,
-
-              checkColor: CupertinoColors.activeGreen,
+      child: Row(
+        children: [
+          CupertinoCheckbox(
+            value: taskCompleted,
+            onChanged: onChanged,
+            side: BorderSide(
+              color:
+                  taskCompleted
+                      ? CupertinoColors.activeGreen
+                      : CupertinoColors.black,
             ),
-            Column(
+            activeColor: Colors.white,
+
+            checkColor: CupertinoColors.activeGreen,
+          ),
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   taskName,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  softWrap: true,
                 ),
                 Text(
                   '$date',
@@ -58,13 +59,13 @@ class ToDoTile extends StatelessWidget {
                 ),
               ],
             ),
-            Expanded(child: SizedBox()),
-            IconButton(
-              onPressed: onTapped,
-              icon: Icon(CupertinoIcons.delete, color: Colors.red, size: 17),
-            ),
-          ],
-        ),
+          ),
+          // Expanded(child: SizedBox()),
+          IconButton(
+            onPressed: onTapped,
+            icon: Icon(CupertinoIcons.delete, color: Colors.red, size: 17),
+          ),
+        ],
       ),
     );
   }
