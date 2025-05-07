@@ -1,26 +1,67 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ToDoTile extends StatelessWidget {
+  final String taskName;
   final bool taskCompleted;
   Function(bool?)? onChanged;
-  ToDoTile({super.key, required this.taskCompleted, required this.onChanged});
+  VoidCallback onTapped;
+
+  ToDoTile({
+    super.key,
+    required this.taskName,
+    required this.taskCompleted,
+    required this.onChanged,
+    required this.onTapped,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final date = DateTime.now();
     return Container(
+      margin: EdgeInsets.only(bottom: 2),
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
-        // color: Colors.red,
+        color: taskCompleted ? Color(0xffdcfce7) : null,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Container(
         child: Row(
           children: [
-            Checkbox(
+            CupertinoCheckbox(
               value: taskCompleted,
               onChanged: onChanged,
+              side: BorderSide(
+                color:
+                    taskCompleted
+                        ? CupertinoColors.activeGreen
+                        : CupertinoColors.black,
+              ),
               activeColor: Colors.white,
-              checkColor: Colors.green,
+
+              checkColor: CupertinoColors.activeGreen,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  taskName,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                ),
+                Text(
+                  '$date',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.shade700,
+                  ),
+                ),
+              ],
+            ),
+            Expanded(child: SizedBox()),
+            IconButton(
+              onPressed: onTapped,
+              icon: Icon(CupertinoIcons.delete, color: Colors.red, size: 17),
             ),
           ],
         ),

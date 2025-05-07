@@ -11,6 +11,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List toDoList = [
+    ['make todo app and push it in github within the day end ', false],
+    ['make todo app', false],
+    ['make todo app', true],
     ['make todo app', false],
   ];
 
@@ -21,10 +24,18 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // Delete tasks
+  void deleteTask(index) {
+    setState(() {
+      toDoList.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
+    var taskCount = toDoList.length;
     return SafeArea(
       child: AnnotatedRegion(
         value: SystemUiOverlayStyle(
@@ -40,13 +51,13 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Good Morning User!",
+                  "Good Morning User !",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                 ),
                 SizedBox(height: 6),
                 Text(
-                  "You have __ tasks",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  "You have $taskCount tasks",
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                 ),
                 SizedBox(height: 16),
                 Text(
@@ -55,10 +66,12 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: toDoList.length,
+                    itemCount: taskCount,
                     itemBuilder: (BuildContext context, int index) {
                       return ToDoTile(
+                        taskName: toDoList[index][0],
                         taskCompleted: toDoList[index][1],
+                        onTapped: () => deleteTask(index),
                         onChanged: (value) => checkBoxChanged(value, index),
                       );
                     },
