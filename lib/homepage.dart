@@ -31,6 +31,9 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // Add new tasks
+  void addNewTask() {}
+
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
@@ -43,6 +46,17 @@ class _HomePageState extends State<HomePage> {
           statusBarIconBrightness: Brightness.dark,
         ),
         child: Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: addNewTask,
+            backgroundColor: Color(0xff10B981),
+            foregroundColor: Colors.white,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(19),
+            ),
+            child: Icon(Icons.add),
+          ),
+
           body: Container(
             height: h,
             width: w,
