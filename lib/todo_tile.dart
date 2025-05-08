@@ -27,27 +27,41 @@ class ToDoTile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CupertinoCheckbox(
-            value: taskCompleted,
-            onChanged: onChanged,
-            side: BorderSide(
-              color:
-                  taskCompleted
-                      ? CupertinoColors.activeGreen
-                      : CupertinoColors.inactiveGray,
-            ),
-            activeColor: Colors.transparent,
+          Transform.scale(
+            scale: 1.2,
+            child: CupertinoCheckbox(
+              value: taskCompleted,
+              onChanged: onChanged,
+              side: BorderSide(
+                color:
+                    taskCompleted
+                        ? CupertinoColors.activeGreen
+                        : CupertinoColors.inactiveGray,
+              ),
+              activeColor: Colors.white,
 
-            checkColor: CupertinoColors.activeGreen,
+              checkColor: CupertinoColors.activeGreen,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+            ),
           ),
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  taskName,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                  softWrap: true,
+                Wrap(
+                  children: [
+                    Text(
+                      taskName,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      softWrap: true,
+                    ),
+                  ],
                 ),
                 Text(
                   '$date',
@@ -60,7 +74,6 @@ class ToDoTile extends StatelessWidget {
               ],
             ),
           ),
-          // Expanded(child: SizedBox()),
           IconButton(
             onPressed: onTapped,
             icon: Icon(CupertinoIcons.delete, color: Colors.red, size: 17),
