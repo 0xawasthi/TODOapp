@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:todo/drawer.dart';
 import 'package:todo/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,7 +33,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Add new tasks
-  void addNewTask() {}
+  void addNewTask() {
+    setState(() {
+      // return BottomDrawerExample();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
