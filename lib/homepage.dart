@@ -32,12 +32,12 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // Add new tasks
-  void addNewTask() {
-    setState(() {
-      // return BottomDrawerExample();
-    });
-  }
+  // // Add new tasks
+  // void addNewTask() {
+  //   setState(() {
+  //     return BottomSheet(onClosing: onClosing, builder: builder)
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,30 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
-            onPressed: addNewTask,
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        title: Padding(
+                          padding: const EdgeInsets.fromLTRB(25, 25, 20, 0),
+                          child: Text(
+                            'Enter Task',
+                            style: TextStyle(
+                              color: Color(0xff475569),
+                              fontSize: 24,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Divider(color: Colors.grey, endIndent: 25, indent: 25),
+                    ],
+                  );
+                },
+              );
+            },
             backgroundColor: Color(0xff10B981),
             foregroundColor: Colors.white,
             elevation: 0,
