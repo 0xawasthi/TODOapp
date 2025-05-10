@@ -58,18 +58,15 @@ class _HomePageState extends State<HomePage> {
                 builder: (context) {
                   return Column(
                     children: [
-                      ListTile(
-                        title: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 25, 20, 0),
-                          child: Text(
-                            'Enter Task',
-                            style: TextStyle(
-                              color: Color(0xff475569),
-                              fontSize: 24,
-                            ),
-                          ),
+                      TextField(
+                        autofillHints: Iterable.empty(),
+                        controller: TextEditingController(),
+                        style: TextStyle(
+                          color: Colors.black,
+                          backgroundColor: Colors.grey,
                         ),
                       ),
+
                       Divider(color: Colors.grey, endIndent: 25, indent: 25),
                     ],
                   );
