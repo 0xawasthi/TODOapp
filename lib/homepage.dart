@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:todo/drawer.dart';
+import 'package:todo/bottom_sheet.dart';
 import 'package:todo/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,13 +32,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // // Add new tasks
-  // void addNewTask() {
-  //   setState(() {
-  //     return BottomSheet(onClosing: onClosing, builder: builder)
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
@@ -56,20 +49,7 @@ class _HomePageState extends State<HomePage> {
               showModalBottomSheet(
                 context: context,
                 builder: (context) {
-                  return Column(
-                    children: [
-                      TextField(
-                        autofillHints: Iterable.empty(),
-                        controller: TextEditingController(),
-                        style: TextStyle(
-                          color: Colors.black,
-                          backgroundColor: Colors.grey,
-                        ),
-                      ),
-
-                      Divider(color: Colors.grey, endIndent: 25, indent: 25),
-                    ],
-                  );
+                  return NewTask();
                 },
               );
             },
