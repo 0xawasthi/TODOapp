@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NewTask extends StatelessWidget {
-  const NewTask({super.key});
+  final controller;
+  VoidCallback onPressed;
+  NewTask({super.key, required this.onPressed, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -11,21 +13,30 @@ class NewTask extends StatelessWidget {
             MediaQuery.of(
               context,
             ).viewInsets.bottom, // Push up when keyboard appears
-        left: 16,
+        left: 25,
         right: 16,
         top: 24,
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        // mainAxisSize: MainAxisSize.min,
         children: [
-          Text("Enter your message"),
-          TextField(decoration: InputDecoration(hintText: 'Type here...')),
-          SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text("Submit"),
+          TextField(
+            controller: controller,
+            decoration: InputDecoration(hintText: 'Enter Task'),
+          ),
+          Expanded(child: SizedBox()),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: onPressed,
+              child: Text(
+                "Create",
+                style: TextStyle(fontSize: 17, color: Color(0xff404040)),
+              ),
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(Color(0xffe5e5e5)),
+              ),
+            ),
           ),
         ],
       ),

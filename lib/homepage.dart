@@ -11,6 +11,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = TextEditingController();
+
+  // List of tasks
   List toDoList = [
     ['make todo app and push it in github within the day end ', false],
     ['make todo app', false],
@@ -23,6 +26,15 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
     });
+  }
+
+  // Create new task
+  void saveNewTask() {
+    setState(() {
+      toDoList.add([controller.text, false]);
+      controller.clear();
+    });
+    Navigator.of(context).pop();
   }
 
   // Delete tasks
@@ -49,7 +61,10 @@ class _HomePageState extends State<HomePage> {
               showModalBottomSheet(
                 context: context,
                 builder: (context) {
-                  return NewTask();
+                  return NewTask(
+                    onPressed: saveNewTask,
+                    controller: controller,
+                  );
                 },
               );
             },
