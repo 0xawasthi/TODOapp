@@ -111,6 +111,10 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
+                ExpansionTile(
+                  title: Text("Click to Expand"),
+                  children: <Widget>[ListTile(title: Text("Expanded content"))],
+                ),
               ],
             ),
           ),
