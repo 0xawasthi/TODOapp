@@ -100,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   child: ListView.builder(
+                    shrinkWrap: true,
                     itemCount: taskCount,
                     itemBuilder: (BuildContext context, int index) {
                       return ToDoTile(
@@ -111,10 +112,10 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                ExpansionTile(
-                  title: Text("Click to Expand"),
-                  children: <Widget>[ListTile(title: Text("Expanded content"))],
-                ),
+                // ExpansionTile(
+                //   title: Text("Click to Expand"),
+                //   children: <Widget>[ListTile(title: Text("Expanded content"))],
+                // ),
               ],
             ),
           ),
