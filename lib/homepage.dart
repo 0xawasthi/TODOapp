@@ -49,6 +49,7 @@ class _HomePageState extends State<HomePage> {
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     var taskCount = toDoList.length;
+    toDoList = [...toDoList.reversed];
     return SafeArea(
       child: AnnotatedRegion(
         value: SystemUiOverlayStyle(
@@ -112,10 +113,6 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                // ExpansionTile(
-                //   title: Text("Click to Expand"),
-                //   children: <Widget>[ListTile(title: Text("Expanded content"))],
-                // ),
               ],
             ),
           ),
