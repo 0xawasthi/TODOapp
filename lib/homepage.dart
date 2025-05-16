@@ -49,6 +49,9 @@ class _HomePageState extends State<HomePage> {
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
     var taskCount = toDoList.length;
+    // Separate pending and completed tasks
+    List pendingTasks = toDoList.where((task) => task[1] == false).toList();
+    List completedTasks = toDoList.where((task) => task[1] == true).toList();
     return SafeArea(
       child: AnnotatedRegion(
         value: SystemUiOverlayStyle(
