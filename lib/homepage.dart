@@ -16,9 +16,6 @@ class _HomePageState extends State<HomePage> {
   // List of tasks
   List toDoList = [
     ['make todo app and push it in github within the day end ', false],
-    ['make todo app', false],
-    ['make todo app', true],
-    ['make todo app', false],
   ];
 
   // checkBox change
