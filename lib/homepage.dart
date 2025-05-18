@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
     // Separate pending and completed tasks
     List pendingTasks = toDoList.where((task) => task[1] == false).toList();
     List completedTasks = toDoList.where((task) => task[1] == true).toList();
-    
+
     return SafeArea(
       child: AnnotatedRegion(
         value: SystemUiOverlayStyle(
@@ -103,19 +103,22 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    // Pending Tasks
-                    ...pendingTasks.asMap().entries.map((entry) {
-                      int originalIndex =
-                          toDoList.indexOf(entry.value); // Actual index
-                      return ToDoTile(
-                        taskName: entry.value[0],
-                        taskCompleted: entry.value[1],
-                        onTapped: () => deleteTask(originalIndex),
-                        onChanged: (value) =>
-                            checkBoxChanged(value, originalIndex),
-                      );
-                    }),
+                  child: ListView(
+                    children: [
+                      // Pending Tasks
+                      ...pendingTasks.asMap().entries.map((entry) {
+                        int originalIndex = toDoList.indexOf(
+                          entry.value,
+                        ); // Actual index
+                        return ToDoTile(
+                          taskName: entry.value[0],
+                          taskCompleted: entry.value[1],
+                          onTapped: () => deleteTask(originalIndex),
+                          onChanged:
+                              (value) => checkBoxChanged(value, originalIndex),
+                        );
+                      }),
+                    ],
                   ),
                 ),
               ],
