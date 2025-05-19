@@ -117,6 +117,32 @@ class _HomePageState extends State<HomePage> {
                               (value) => checkBoxChanged(value, originalIndex),
                         );
                       }),
+                      SizedBox(height: 12),
+
+                      // Completed Tasks Section
+                      ExpansionTile(
+                        title: Text(
+                          "Completed",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        children:
+                            completedTasks.asMap().entries.map((entry) {
+                              int originalIndex = toDoList.indexOf(
+                                entry.value,
+                              ); // Actual index
+                              return ToDoTile(
+                                taskName: entry.value[0],
+                                taskCompleted: entry.value[1],
+                                onTapped: () => deleteTask(originalIndex),
+                                onChanged:
+                                    (value) =>
+                                        checkBoxChanged(value, originalIndex),
+                              );
+                            }).toList(),
+                      ),
                     ],
                   ),
                 ),
