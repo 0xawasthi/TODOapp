@@ -18,7 +18,6 @@ class _HomePageState extends State<HomePage> {
     ['do work', false],
     ['do work', false],
     ['do work', false],
-    ['do work', false],
   ];
 
   // checkBox change
