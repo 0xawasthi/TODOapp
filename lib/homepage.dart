@@ -93,9 +93,18 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                 ),
                 SizedBox(height: 16),
-                Text(
-                  "To Do",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                Row(
+                  children: [
+                    Icon(Icons.alarm),
+                    SizedBox(width: 10),
+                    Text(
+                      "To Do",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
                 Expanded(
                   child: ListView(
