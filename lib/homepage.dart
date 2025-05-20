@@ -14,11 +14,7 @@ class _HomePageState extends State<HomePage> {
   final controller = TextEditingController();
 
   // List of tasks
-  List toDoList = [
-    ['do work', false],
-    ['do work', false],
-    ['do work', false],
-  ];
+  List toDoList = [];
 
   // checkBox change
   void checkBoxChanged(value, index) {
